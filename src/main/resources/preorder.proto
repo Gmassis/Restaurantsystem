@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+//Options for the GRPC
+option java_multiple_files = true;
+option java_package = "grpc.ca.preorder";
+option java_outer_classname = "PreOrderImpl";
+package preorder;
+
+//Service 2 - Definition
+service PreOrder {
+	rpc Menu (MenuRequest) returns (MenuReply) {
+	}
+	rpc Order (OrderRequest) returns (stream OrderReply) {
+	}
+	rpc Status (StatusRequest) returns (stream StatusReply) {
+	}
+}
+
+//Define the messages
+
+//Menu messages
+message MenuRequest {
+	string request = 1;
+}
+
+message MenuReply {
+	string hamburger = 1;
+	string cheeseburger = 2;
+	string coke = 3;
+	string fanta = 4;
+	int32 resID = 5;
+}
+
+//Order messages
+message OrderRequest {
+	string food = 1;
+	string drink = 2;
+	int32 qty = 3;
+}
+
+message OrderReply {
+	int32 orderNo = 1;
+	int32 totalPrice = 2;
+	string message = 3;
+}
+
+//Status messsages
+message StatusRequest {
+	int32 orderNo = 1;
+}
+
+message StatusReply {
+	string Status = 1;
+}

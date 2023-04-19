@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+//Options for the GRPC
+option java_multiple_files = true;
+option java_package = "grpc.ca.review";
+option java_outer_classname = "ReviewImpl";
+package review;
+
+//Service 3 - Definition
+service Review {
+	rpc Write (stream WriteRequest) returns (WriteReply) {
+	}
+	rpc Edit (stream EditRequest) returns (EditReply) {
+	}
+	rpc Chat (stream ChatRequest) returns (stream ChatReply) {
+	}
+}
+
+//Define the messages
+
+//Write messages
+message WriteRequest {
+	int32 resID = 1;
+	int32 rating = 2;
+	string name = 3;
+	string text = 4;
+}
+
+message WriteReply {
+	int32 reviewID = 1;
+	string message = 2;
+}
+
+//Edit messages
+message EditRequest {
+	int32 reviewID = 1;
+	string reviewText = 2;
+}
+
+message EditReply {
+	string message = 3;
+}
+
+//Chat messages
+message ChatRequest {
+	int32 resID = 1;
+	string message = 2;
+}
+
+message ChatReply {
+	string message = 1;
+}

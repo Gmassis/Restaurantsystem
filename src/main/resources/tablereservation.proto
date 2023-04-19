@@ -1,0 +1,56 @@
+syntax = "proto3";
+
+//Options for the GRPC
+option java_multiple_files = true;
+option java_package = "grpc.ca.tablereservation";
+option java_outer_classname = "TableReservationImpl";
+package tablereservation;
+
+//Service 1 - Definition
+service TableReservation {
+	rpc TableReserve (ReserveRequest) returns (ReserveReply) {
+	}
+	rpc TableCancel (CancelRequest) returns (CancelReply) {
+	}
+	rpc TableCheck (CheckRequest) returns (CheckReply) {
+	}
+}
+
+//Define the messages
+
+//TableReserve messages
+message ReserveRequest {
+	int32 nPeople = 1;
+	string day = 2;
+	string time = 3;
+	string name = 4;
+}
+
+message ReserveReply {
+	int32 resID = 1;
+	string message = 2;
+}
+
+//TableCancel messages
+message CancelRequest {
+	int32 resID = 1;
+	string name = 2;
+	string day = 3;
+}
+
+message CancelReply {
+	string message = 1;
+}
+
+//TableCheck messsages
+message CheckRequest {
+	int32 resID = 1;
+	string name = 2;
+}
+
+message CheckReply {
+	int32 resID = 1;
+	int32 noPeople = 2;
+	string day = 3;
+	string message = 4;
+}
