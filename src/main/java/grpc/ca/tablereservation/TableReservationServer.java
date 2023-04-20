@@ -57,6 +57,7 @@ public class TableReservationServer extends TableReservationImplBase {
 		CheckReply reply = CheckReply.newBuilder().setMessage("Those are your reservation details:" + "\nID: " + request.getResID() + "\nNumber of People: ")
 		//reply.getNoPeople() + "\nDay: " + reply.getDay())
 				.build();
+		
 
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
