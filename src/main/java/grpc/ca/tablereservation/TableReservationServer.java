@@ -38,29 +38,21 @@ public class TableReservationServer extends TableReservationImplBase {
 		// TODO Auto-generated method stub
 		System.out.println("---Receiving Table Reserver Request from client---");
 		
-		in = new FileInputStream("input.txt");
-        out = new FileOutputStream("output.txt");
+		//in = new FileInputStream("input.txt");
+        //out = new FileOutputStream("output.txt");
 		
 		ReserveReply reply = ReserveReply.newBuilder().setResID(0).setMessage("Reservation sucessfull").build();
 		
 		
-		out.write(request.getDay());
+		//out.write(request.getDay().t);
 		
-		
-		
-		
+			
 		
 		
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
 		
 	}
-
-	
-	
-	
-	
-	
 	
 	
 	@Override
@@ -80,9 +72,7 @@ public class TableReservationServer extends TableReservationImplBase {
 		// TODO Auto-generated method stub
 		System.out.println("---Receiving Table Reserver Request from client---");
 		
-		CheckReply reply = CheckReply.newBuilder().setMessage("Those are your reservation details:" + "\nID: " + request.getResID() + "\nNumber of People: " +
-		request. + "\nDay: " + reply.getDay())
-				.build();
+		CheckReply reply = CheckReply.newBuilder().setMessage("Those are your reservation details:").build();
 		
 
 		responseObserver.onNext(reply);
