@@ -1,5 +1,7 @@
 package grpc.ca.tablereservation;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import grpc.ca.tablereservation.TableReservationGrpc.TableReservationImplBase;
@@ -9,7 +11,13 @@ import io.grpc.stub.StreamObserver;
 
 public class TableReservationServer extends TableReservationImplBase {
 
+	FileInputStream in = null;
+    FileOutputStream out = null;
+	
 	public static void main(String[] args) {
+		
+		
+		
 		TableReservationServer reservationserver = new TableReservationServer();
 		int port = 50051;
 
@@ -30,13 +38,31 @@ public class TableReservationServer extends TableReservationImplBase {
 		// TODO Auto-generated method stub
 		System.out.println("---Receiving Table Reserver Request from client---");
 		
+		in = new FileInputStream("input.txt");
+        out = new FileOutputStream("output.txt");
+		
 		ReserveReply reply = ReserveReply.newBuilder().setResID(0).setMessage("Reservation sucessfull").build();
+		
+		
+		out.write(request.getDay());
+		
+		
+		
+		
+		
 		
 		responseObserver.onNext(reply);
 		responseObserver.onCompleted();
 		
 	}
 
+	
+	
+	
+	
+	
+	
+	
 	@Override
 	public void tableCancel(CancelRequest request, StreamObserver<CancelReply> responseObserver) {
 		// TODO Auto-generated method stub
@@ -54,8 +80,8 @@ public class TableReservationServer extends TableReservationImplBase {
 		// TODO Auto-generated method stub
 		System.out.println("---Receiving Table Reserver Request from client---");
 		
-		CheckReply reply = CheckReply.newBuilder().setMessage("Those are your reservation details:" + "\nID: " + request.getResID() + "\nNumber of People: ")
-		//reply.getNoPeople() + "\nDay: " + reply.getDay())
+		CheckReply reply = CheckReply.newBuilder().setMessage("Those are your reservation details:" + "\nID: " + request.getResID() + "\nNumber of People: " +
+		request. + "\nDay: " + reply.getDay())
 				.build();
 		
 
