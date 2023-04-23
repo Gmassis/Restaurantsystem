@@ -11,7 +11,7 @@ public class ReviewServer extends ReviewImplBase {
 	public static void main(String[] args) {
 		
 		ReviewServer reviewserver = new ReviewServer();
-		int port = 50037;
+		int port = 50038;
 
 		Server server;
 		try {
