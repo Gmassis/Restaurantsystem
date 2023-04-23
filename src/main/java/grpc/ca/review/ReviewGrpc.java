@@ -270,6 +270,12 @@ public final class ReviewGrpc {
         io.grpc.CallOptions callOptions) {
       return new ReviewBlockingStub(channel, callOptions);
     }
+  //Add to code//
+	public WriteReply write(WriteRequest request) {
+		// TODO Auto-generated method stub
+		return null;
+		//Add to code//
+	}
   }
 
   /**

@@ -13,11 +13,12 @@ public class PreOrderServer extends PreOrderImplBase{
 	public static void main(String[] args) {
 		
 		PreOrderServer orderserver = new PreOrderServer();
-		int port = 50051;
+		int port = 50037;
 
 		Server server;
 		try {
 			server = ServerBuilder.forPort(port).addService(orderserver).build().start();
+			System.out.println("Pre Order Server Started");
 			server.awaitTermination();
 
 		} catch (IOException | InterruptedException e) {

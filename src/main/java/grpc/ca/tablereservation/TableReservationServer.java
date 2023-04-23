@@ -19,11 +19,12 @@ public class TableReservationServer extends TableReservationImplBase {
 		
 		
 		TableReservationServer reservationserver = new TableReservationServer();
-		int port = 50051;
+		int port = 50038;
 
 		Server server;
 		try {
 			server = ServerBuilder.forPort(port).addService(reservationserver).build().start();
+			System.out.println("ServerStarted");
 			server.awaitTermination();
 
 		} catch (IOException | InterruptedException e) {
